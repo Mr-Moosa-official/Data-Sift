@@ -47,7 +47,7 @@ export default function Home() {
                 </CardDescription>
                 <div className="relative mt-4">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search records..." className="pl-10" disabled />
+                  <Input placeholder="Search records..." className="pl-10" disabled value={searchQuery} />
                 </div>
               </CardHeader>
               <CardContent>

@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, User, Mail, Building, Briefcase, BookText, Calendar } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 
 export default function RecordDetailPage() {
   const params = useParams();
@@ -60,12 +61,12 @@ export default function RecordDetailPage() {
     notFound();
   }
 
-  const DetailItem = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | React.ReactNode }) => (
+  const DetailItem = ({ icon: Icon, label, value, valueClassName }: { icon: React.ElementType, label: string, value: string | React.ReactNode, valueClassName?: string }) => (
     <div className="flex items-start gap-4">
       <Icon className="w-5 h-5 mt-1 text-primary" />
       <div>
         <p className="text-sm font-medium text-muted-foreground">{label}</p>
-        <p className="text-lg text-foreground">{value}</p>
+        <p className={cn("text-lg text-foreground", valueClassName)}>{value}</p>
       </div>
     </div>
   );
@@ -96,7 +97,7 @@ export default function RecordDetailPage() {
             <DetailItem icon={Building} label="Company" value={record.company} />
             <DetailItem icon={Briefcase} label="Title" value={record.title} />
             {record.notes && (
-              <DetailItem icon={BookText} label="Notes" value={<p className="whitespace-pre-wrap">{record.notes}</p>} />
+              <DetailItem icon={BookText} label="Notes" value={record.notes} valueClassName="whitespace-pre-wrap" />
             )}
             <DetailItem icon={Calendar} label="Record Created" value={new Date(record.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })} />
           </CardContent>

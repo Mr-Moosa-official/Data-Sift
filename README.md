@@ -10,7 +10,7 @@ Add and manage structured data records
 
 Quickly search across records using multiple criteria
 
-View results in a clear, navigable format
+View results in a clear, navigable  format
 
 Access detailed information for each record
 
